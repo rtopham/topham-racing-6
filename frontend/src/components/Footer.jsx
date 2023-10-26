@@ -1,13 +1,12 @@
 import { Container, Row, Col } from 'react-bootstrap'
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear()
   return (
     <footer>
       <Container>
         <Row>
           <Col className='text-center py-3'>
-            <p>MERN RTK &copy; {currentYear}</p>
+            <p>Race a bike. Improve your life.</p>
           </Col>
         </Row>
       </Container>

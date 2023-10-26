@@ -8,7 +8,8 @@ import {
 
 import './table.css'
 const ServerSortableTable = (props) => {
-  const { data, config, sortBy, sortOrder, setSortColumn, keyFn } = props
+  const { data, config, sortBy, sortOrder, setSortColumn, keyFn, ...rest } =
+    props
 
   //const { sortOrder, sortBy, sortedData, setSortColumn } = useSort(data, config)
 
@@ -52,6 +53,8 @@ const ServerSortableTable = (props) => {
     }
   }
 
-  return <DataTable data={data} config={updatedConfig} keyFn={keyFn} />
+  return (
+    <DataTable {...rest} data={data} config={updatedConfig} keyFn={keyFn} />
+  )
 }
 export default ServerSortableTable

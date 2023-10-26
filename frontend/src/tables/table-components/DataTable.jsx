@@ -2,7 +2,16 @@ import { Fragment } from 'react'
 import { Table } from 'react-bootstrap'
 
 const DataTable = (props) => {
-  const { data, config, keyFn, refetch, ...rest } = props
+  const {
+    data,
+    config,
+    keyFn,
+    refetch,
+    setSortColumn,
+    sortBy,
+    sortOrder,
+    ...rest
+  } = props
 
   let pageData = [...data]
 
