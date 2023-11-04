@@ -1,6 +1,6 @@
 import { LinkContainer } from 'react-router-bootstrap'
 import { Button } from 'react-bootstrap'
-import { Icon, TRASH_ICON, EDIT_ICON } from '../icons'
+import { Icon, TRASH_ICON, EDIT_ICON, MEDAL_ICON } from '../icons'
 import useServerSort from '../../tables/table-hooks/useServerSort'
 import SortableTable from '../../tables/table-components/SortableTable'
 import { usNormal } from '../../utils/dateFormats'

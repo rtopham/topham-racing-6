@@ -4,3 +4,6 @@
 export const BASE_URL = ''
 export const USERS_URL = '/api/users'
 export const RACES_URL = '/api/races'
+export const TITLES_URL = '/api/titles'
+export const IMAGES_URL = '/api/images'
+export const STRAVA_URL = '/api/strava'

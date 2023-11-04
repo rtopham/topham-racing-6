@@ -1,6 +1,14 @@
 import { useNavigate } from 'react-router-dom'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
-import { Icon, USER_ICON, GEAR_ICON } from './icons'
+import {
+  Icon,
+  USER_ICON,
+  GEAR_ICON,
+  CYCLIST_ICON,
+  MEDAL_ICON,
+  CHART_ICON,
+  STRAVA_ICON
+} from './icons'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
 import { useLogoutMutation } from '../slices/usersApiSlice'
@@ -26,7 +34,7 @@ const Header = () => {
 
   return (
     <header>
-      <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
+      <Navbar bg='dark' variant='dark' expand='lg' fixed='top' collapseOnSelect>
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
@@ -46,11 +54,33 @@ const Header = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <LinkContainer to='/login'>
-                  <Nav.Link>
-                    <Icon icon={USER_ICON} /> Sign In
-                  </Nav.Link>
-                </LinkContainer>
+                <>
+                  <LinkContainer to='/races'>
+                    <Nav.Link>
+                      <Icon icon={CYCLIST_ICON} /> Races
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/titles'>
+                    <Nav.Link>
+                      <Icon icon={MEDAL_ICON} /> Titles
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/stats'>
+                    <Nav.Link>
+                      <Icon icon={CHART_ICON} /> Stats
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/strava'>
+                    <Nav.Link>
+                      <Icon icon={STRAVA_ICON} /> Strava
+                    </Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to='/login'>
+                    <Nav.Link>
+                      <Icon icon={USER_ICON} /> Sign In
+                    </Nav.Link>
+                  </LinkContainer>
+                </>
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title='Admin' id='adminmenu'>

@@ -8,6 +8,9 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 // import productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import raceRoutes from './routes/raceRoutes.js'
+import titleRoutes from './routes/titleRoutes.js'
+import stravaRoutes from './routes/stravaRoutes.js'
+import imageRoutes from './routes/imageRoutes.js'
 //import uploadRoutes from './routes/uploadRoutes.js' */
 
 //Define Port
@@ -29,9 +32,11 @@ app.get('/', (req, res) => {
   res.send('API is running...')
 })
 
-//app.use('/api/products', productRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/races', raceRoutes)
+app.use('/api/titles', titleRoutes)
+app.use('/api/images', imageRoutes)
+app.use('/api/strava', stravaRoutes)
 //app.use('/api/upload', uploadRoutes) */
 
 app.use(notFound)

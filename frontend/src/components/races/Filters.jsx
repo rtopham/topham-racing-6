@@ -2,7 +2,7 @@ import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
 import { filterRaces } from '../../slices/racesSlice'
 
-const Filters = ({ races }) => {
+const Filters = ({ races, activeFilter }) => {
   const dispatch = useDispatch()
 
   const clickFilter = (e) => {
@@ -35,7 +35,7 @@ const Filters = ({ races }) => {
         value={'all'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'all'}
         onClick={clickFilter}
       >
         All Races ({races.length})
@@ -45,7 +45,7 @@ const Filters = ({ races }) => {
         value={'current'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'current'}
         onClick={clickFilter}
       >
         Current Season (
@@ -64,7 +64,7 @@ const Filters = ({ races }) => {
         value={'lastYear'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'lastYear'}
         onClick={clickFilter}
       >
         Last Season (
@@ -83,7 +83,7 @@ const Filters = ({ races }) => {
         value={'ICUP'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'ICUP'}
         onClick={clickFilter}
       >
         ICUP ({allTimeICUP})
@@ -93,7 +93,7 @@ const Filters = ({ races }) => {
         value={'Mid-Week'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'Mid-Week'}
         onClick={clickFilter}
       >
         Mid-Week ({allTimeMidWeek})
@@ -103,7 +103,7 @@ const Filters = ({ races }) => {
         value={'USAC'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'USAC'}
         onClick={clickFilter}
       >
         USAC ({allTimeUSAC})
@@ -113,7 +113,7 @@ const Filters = ({ races }) => {
         value={'Other'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'Other'}
         onClick={clickFilter}
       >
         Other ({allTimeOther})
@@ -123,7 +123,7 @@ const Filters = ({ races }) => {
         value={'Podiums'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'Podiums'}
         onClick={clickFilter}
       >
         Podiums ({allTimePodiums})
@@ -133,7 +133,7 @@ const Filters = ({ races }) => {
         value={'Wins'}
         variant='light'
         size='sm'
-        active
+        active={activeFilter === 'Wins'}
         onClick={clickFilter}
       >
         Wins ({allTimeWins})

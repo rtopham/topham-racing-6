@@ -1,8 +1,6 @@
 import { Carousel } from 'react-bootstrap'
 
 const ImageCarousel = ({ images }) => {
-  const imgUrl = '/api/images/'
-
   return (
     <Carousel className='mb-3' slide fade interval={null}>
       {images.map((image, index) => {
@@ -16,8 +14,7 @@ const ImageCarousel = ({ images }) => {
                 overflow: 'hidden'
               }}
               className='d-block w-100'
-              //src={image}
-              src={`${imgUrl}${image.filename}`}
+              src={image}
               alt={index}
             />
             {/*  <Carousel.Caption>

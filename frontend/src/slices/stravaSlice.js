@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-const initialState = { races: [] }
+const initialState = { strava: {} }
 
-const racesSlice = createSlice({
-  name: 'races',
+const stravaSlice = createSlice({
+  name: 'strava',
   initialState,
   reducers: {
     filterRaces: (state, action) => {
@@ -49,6 +49,6 @@ const racesSlice = createSlice({
   }
 })
 
-export const { filterRaces } = racesSlice.actions
+export const { filterRaces } = stravaSlice.actions
 
-export default racesSlice.reducer
+export default stravaSlice.reducer

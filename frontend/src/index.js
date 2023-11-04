@@ -13,8 +13,8 @@ import store from './store'
 //Use following for custom Bootstrap styles
 import './assets/styles/bootstrap.custom.css'
 import './assets/styles/index.css'
-import PrivateRoute from './components/PrivateRoute'
-import AdminRoute from './components/AdminRoute'
+import PrivateRoute from './components/routing/PrivateRoute'
+import AdminRoute from './components/routing/AdminRoute'
 import App from './App'
 import HomeScreen from './screens/HomeScreen'
 import LoginScreen from './screens/LoginScreen'
@@ -24,13 +24,22 @@ import UserListScreen from './screens/admin/UserListScreen'
 import UserEditScreen from './screens/admin/UserEditScreen'
 import reportWebVitals from './reportWebVitals'
 import FormTestScreen from './screens/admin/FormTestScreen'
+import RaceListScreen from './screens/RaceListScreen'
+import TitleListScreen from './screens/TitleListScreen'
+import StatsScreen from './screens/StatsScreen'
+import StravaScreen from './screens/StravaScreen'
+import ErrorScreen from './screens/ErrorScreen'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<App />}>
+    <Route path='/' element={<App />} errorElement={<ErrorScreen />}>
       <Route index={true} path='/' element={<HomeScreen />} />
       <Route path='/login' element={<LoginScreen />} />
       <Route path='/register' element={<RegisterScreen />} />
+      <Route path='/races' element={<RaceListScreen />} />
+      <Route path='/titles' element={<TitleListScreen />} />
+      <Route path='/stats' element={<StatsScreen />} />
+      <Route path='/strava' element={<StravaScreen />} />
 
       <Route path='' element={<PrivateRoute />}>
         <Route path='/profile' element={<ProfileScreen />} />
