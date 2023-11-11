@@ -19,6 +19,14 @@ export const stravaApiSlice = apiSlice.injectEndpoints({
       providesTags: ['StravaData'],
       keepUnusedDataFor: 5
     }),
+    getStravaActivity: builder.query({
+      query: ({ theEpoch, strava_token }) => ({
+        url: STRAVA_URL + '/activity',
+        params: { theEpoch, strava_token }
+      }),
+      providesTags: ['StravaActivity'],
+      keepUnusedDataFor: 5
+    }),
     updateStravaTokens: builder.mutation({
       query: (data) => ({
         url: STRAVA_URL + '/',
@@ -33,5 +41,6 @@ export const stravaApiSlice = apiSlice.injectEndpoints({
 export const {
   useGetStravaProfileQuery,
   useGetStravaDataQuery,
+  useGetStravaActivityQuery,
   useUpdateStravaTokensMutation
 } = stravaApiSlice

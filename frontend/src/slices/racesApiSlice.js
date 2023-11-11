@@ -26,9 +26,46 @@ export const racesApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ['Last Race'],
       keepUnusedDataFor: 5
+    }),
+    getRaceById: builder.query({
+      query: (raceId) => ({
+        url: `${RACES_URL}/${raceId}`
+      }),
+      providesTags: ['Edit Race'],
+      keepUnusedDataFor: 5
+    }),
+    addRace: builder.mutation({
+      query: (data) => ({
+        url: RACES_URL + '/',
+        method: 'POST',
+        body: data
+      }),
+      invalidatesTags: ['Races']
+    }),
+    updateRace: builder.mutation({
+      query: (data) => ({
+        url: `${RACES_URL}/${data._id}`,
+        method: 'PUT',
+        body: data
+      }),
+      invalidatesTags: ['Races']
+    }),
+    deleteRace: builder.mutation({
+      query: (raceId) => ({
+        url: `${RACES_URL}/${raceId}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['Races']
     })
   })
 })
 
-export const { useGetRacesQuery, useGetAllRacesQuery, useGetLastRaceQuery } =
-  racesApiSlice
+export const {
+  useGetRacesQuery,
+  useGetAllRacesQuery,
+  useGetLastRaceQuery,
+  useGetRaceByIdQuery,
+  useAddRaceMutation,
+  useUpdateRaceMutation,
+  useDeleteRaceMutation
+} = racesApiSlice

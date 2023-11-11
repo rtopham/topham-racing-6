@@ -2,7 +2,10 @@ export const requiredRule = (inputName, message) => {
   return {
     name: 'required',
     message: message || `${inputName} required`,
-    validate: (inputValue, values) => inputValue.length !== 0
+    validate: (inputValue, values) => {
+      if (inputValue === '') return false
+      return inputValue.length !== 0
+    }
   }
 }
 
@@ -48,6 +51,16 @@ export const passwordMatchRule = (inputName, message) => {
     message: message || `${inputName} must match password.`,
     validate: (inputValue, values) => {
       return inputValue === values.password
+    }
+  }
+}
+
+export const confirmTextRule = (inputName, message) => {
+  return {
+    name: 'confirmText',
+    message: message || `${inputName} must match confirmation text.`,
+    validate: (inputValue, values, customProps) => {
+      return inputValue === customProps.confirmationText
     }
   }
 }

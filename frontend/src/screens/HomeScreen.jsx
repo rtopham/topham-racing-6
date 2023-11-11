@@ -1,4 +1,4 @@
-import ImageCarousel from '../components/ImageCarousel'
+import ImageCarousel from '../components/images/ImageCarousel'
 import LastRace from '../components/races/LastRace'
 import { useGetLastRaceQuery } from '../slices/racesApiSlice'
 import { useGetAllImagesQuery } from '../slices/imageApiSlice'
@@ -22,10 +22,13 @@ const HomeScreen = () => {
     <>
       {isLoading || isImagesLoading ? (
         <Loader />
-      ) : error ? (
+      ) : error || imageError ? (
         <Message variant='danger'>
           {' '}
-          {error?.data?.message || error.error}
+          {error?.data?.message ||
+            error?.error ||
+            imageError?.data.message ||
+            imageError?.error}
         </Message>
       ) : (
         <>

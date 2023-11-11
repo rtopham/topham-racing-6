@@ -32,6 +32,36 @@ const Header = () => {
     }
   }
 
+  const AppLinks = () => (
+    <>
+      <LinkContainer to='/races'>
+        <Nav.Link>
+          <Icon icon={CYCLIST_ICON} /> Races
+        </Nav.Link>
+      </LinkContainer>
+      <LinkContainer to='/titles'>
+        <Nav.Link>
+          <Icon icon={MEDAL_ICON} /> Titles
+        </Nav.Link>
+      </LinkContainer>
+      <LinkContainer to='/stats'>
+        <Nav.Link>
+          <Icon icon={CHART_ICON} /> Stats
+        </Nav.Link>
+      </LinkContainer>
+      <LinkContainer to='/strava'>
+        <Nav.Link>
+          <Icon icon={STRAVA_ICON} /> Strava
+        </Nav.Link>
+      </LinkContainer>
+      <LinkContainer to='/login'>
+        <Nav.Link>
+          <Icon icon={USER_ICON} /> Sign In
+        </Nav.Link>
+      </LinkContainer>
+    </>
+  )
+
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' fixed='top' collapseOnSelect>
@@ -45,50 +75,35 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
               {userInfo ? (
-                <NavDropdown title={userInfo.name} id='username'>
-                  <LinkContainer to='/profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
-                  </LinkContainer>
-                  <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <>
+                  <AppLinks />
+                  <NavDropdown title={userInfo.name} id='username'>
+                    <LinkContainer to='/profile'>
+                      <NavDropdown.Item>Profile</NavDropdown.Item>
+                    </LinkContainer>
+                    <NavDropdown.Item onClick={logoutHandler}>
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </>
               ) : (
                 <>
-                  <LinkContainer to='/races'>
-                    <Nav.Link>
-                      <Icon icon={CYCLIST_ICON} /> Races
-                    </Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to='/titles'>
-                    <Nav.Link>
-                      <Icon icon={MEDAL_ICON} /> Titles
-                    </Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to='/stats'>
-                    <Nav.Link>
-                      <Icon icon={CHART_ICON} /> Stats
-                    </Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to='/strava'>
-                    <Nav.Link>
-                      <Icon icon={STRAVA_ICON} /> Strava
-                    </Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to='/login'>
-                    <Nav.Link>
-                      <Icon icon={USER_ICON} /> Sign In
-                    </Nav.Link>
-                  </LinkContainer>
+                  <AppLinks />
                 </>
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/userlist'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
+                    <NavDropdown.Item>User List</NavDropdown.Item>
                   </LinkContainer>
-                  <LinkContainer to='/admin/formtest'>
-                    <NavDropdown.Item>Form Test</NavDropdown.Item>
+                  <LinkContainer to='/admin/add-race'>
+                    <NavDropdown.Item>Add Race</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/edit-races'>
+                    <NavDropdown.Item>Edit or Delete Races</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/manage-images'>
+                    <NavDropdown.Item>Manage Images</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}

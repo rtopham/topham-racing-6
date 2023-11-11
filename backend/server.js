@@ -2,6 +2,7 @@ import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import cookieParser from 'cookie-parser'
+import fileupload from 'express-fileupload'
 dotenv.config()
 import connectDB from './config/db.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
@@ -20,6 +21,9 @@ const port = process.env.PORT || 5000
 connectDB()
 
 const app = express()
+
+//Provide parsing for file uploads
+app.use(fileupload())
 
 //Body parser middleware
 app.use(express.json())

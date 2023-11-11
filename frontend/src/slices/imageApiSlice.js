@@ -10,8 +10,35 @@ export const imageApiSlice = apiSlice.injectEndpoints({
       }),
       providesTags: ['Gallery'],
       keepUnusedDataFor: 5
+    }),
+    uploadImage: builder.mutation({
+      query: (data) => {
+        const formData = new FormData()
+        formData.append('image', data.images[0])
+        return {
+          url: IMAGES_URL,
+          method: 'POST',
+          /* headers: {
+            Accept: 'application/json',
+            'Content-Type': 'multipart/form-data'
+          }, */
+          body: formData
+        }
+      },
+      invalidatesTags: ['Gallery']
+    }),
+    deleteImage: builder.mutation({
+      query: (imageId) => ({
+        url: `${IMAGES_URL}/${imageId}`,
+        method: 'DELETE'
+      }),
+      invalidatesTags: ['Gallery']
     })
   })
 })
 
-export const { useGetAllImagesQuery } = imageApiSlice
+export const {
+  useGetAllImagesQuery,
+  useUploadImageMutation,
+  useDeleteImageMutation
+} = imageApiSlice

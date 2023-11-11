@@ -23,12 +23,15 @@ import ProfileScreen from './screens/ProfileScreen'
 import UserListScreen from './screens/admin/UserListScreen'
 import UserEditScreen from './screens/admin/UserEditScreen'
 import reportWebVitals from './reportWebVitals'
-import FormTestScreen from './screens/admin/FormTestScreen'
 import RaceListScreen from './screens/RaceListScreen'
 import TitleListScreen from './screens/TitleListScreen'
 import StatsScreen from './screens/StatsScreen'
 import StravaScreen from './screens/StravaScreen'
 import ErrorScreen from './screens/ErrorScreen'
+import AddRace from './screens/admin/AddRace'
+import EditRacesScreen from './screens/EditRacesScreen'
+import ManageImagesScreen from './screens/admin/ManageImagesScreen'
+import EditRace from './screens/admin/EditRaceScreen'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -46,7 +49,10 @@ const router = createBrowserRouter(
       </Route>
       <Route path='' element={<AdminRoute />}>
         <Route path='/admin/userlist' element={<UserListScreen />} />
-        <Route path='/admin/formtest' element={<FormTestScreen />} />
+        <Route path='/admin/add-race' element={<AddRace />} />
+        <Route path='/admin/edit-races' element={<EditRacesScreen />} />
+        <Route path='/admin/manage-images' element={<ManageImagesScreen />} />
+        <Route path='/admin/edit-races/:id' element={<EditRace />} />
         <Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
       </Route>
     </Route>

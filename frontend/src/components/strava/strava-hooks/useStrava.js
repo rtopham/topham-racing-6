@@ -1,19 +1,37 @@
 import { useEffect } from 'react'
-import { toast } from 'react-toastify'
-import { useSelector, useDispatch } from 'react-redux'
-import { updateStravaTokens } from '../../../features/strava/stravaSlice'
+import {
+  useGetStravaProfileQuery,
+  useUpdateStravaTokensMutation
+} from '../../../slices/stravaApiSlice'
 
-const useStrava = (userId) => {
-  const { stravaProfile } = useSelector((state) => state.strava)
-  const dispatch = useDispatch()
+const useStrava = () => {
+  const {
+    data: stravaProfile,
+    isLoading,
+    error,
+    refetch
+  } = useGetStravaProfileQuery({
+    userId: '5bd91a027b59b61efe06ae3d'
+  })
+
+  const [updateTokens, { error: tokenError }] = useUpdateStravaTokensMutation()
 
   useEffect(() => {
-    //check tokens and get strava profile
+    const checkTokens = async () => {
+      const now = new Date()
+      const secondsSinceEpoch = Math.round(now.getTime() / 1000)
 
-    dispatch(updateStravaTokens(userId)).unwrap().catch(toast.error)
-  }, [dispatch, userId])
+      const { strava_token_expires_at } = stravaProfile
 
-  return stravaProfile
+      if (strava_token_expires_at < secondsSinceEpoch) {
+        await updateTokens(stravaProfile)
+        refetch()
+      }
+    }
+    if (!isLoading) checkTokens()
+  }, [refetch, updateTokens, isLoading, stravaProfile])
+
+  return { isLoading, error, tokenError, stravaProfile }
 }
 
 export default useStrava

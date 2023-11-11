@@ -6,9 +6,10 @@ import Loader from '../components/Loader'
 import Message from '../components/Message'
 import StravaWidgets from '../components/strava/StravaWidgets'
 import StravaStats from '../components/strava/StravaStats'
+import useStrava from '../components/strava/strava-hooks/useStrava'
 
 const StravaScreen = () => {
-  const {
+  /*   const {
     data: stravaProfile,
     isLoading,
     error,
@@ -32,7 +33,9 @@ const StravaScreen = () => {
       }
     }
     if (!isLoading) checkTokens()
-  }, [refetch, updateTokens, isLoading, stravaProfile])
+  }, [refetch, updateTokens, isLoading, stravaProfile]) */
+
+  const { isLoading, error, tokenError, stravaProfile } = useStrava()
 
   return (
     <>

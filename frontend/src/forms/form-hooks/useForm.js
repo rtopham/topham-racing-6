@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 
 import InputField from '../form-components/InputField'
 
-const useForm = (inputArray, initialValues) => {
+const useForm = (inputArray, initialState, customProps) => {
   let initialTouched = {}
   let initialValidity = {}
   let initialErrors = {}
@@ -10,16 +10,23 @@ const useForm = (inputArray, initialValues) => {
   inputArray.forEach((input) => {
     initialTouched[input.name] = false
     initialValidity[input.name] = false
-    initialErrors[input.name] = ''
+    //initialErrors[input.name] = ''
   })
 
-  const [values, setValues] = useState(initialValues)
+  const [values, setValues] = useState(initialState)
   const [touched, setTouched] = useState(initialTouched)
   const [valid, setValid] = useState(initialValidity)
-  const [errors, setErrors] = useState(initialValidity)
-  const [initialStateValues, setInitialStateValues] = useState(initialValues)
+  const [errors, setErrors] = useState(initialErrors)
 
-  const renderInput = (field, handleChange, value, isValid, error, key) => {
+  const renderInput = (
+    field,
+    handleChange,
+    value,
+    isValid,
+    error,
+    key,
+    customProps = {}
+  ) => {
     const { validationRules, ...rest } = field
     return (
       <InputField
@@ -29,21 +36,21 @@ const useForm = (inputArray, initialValues) => {
         value={value}
         handleChange={handleChange}
         errorMessage={error}
+        {...customProps}
       />
     )
   }
 
-  const renderFormInputs = () => {
+  const renderFormInputs = (customProps = {}) => {
     return inputArray.map((field) => {
-      const { label } = field
-
       return renderInput(
         field,
         onChange,
         values[field.name],
         valid[field.name],
         errors[field.name],
-        label
+        field.name,
+        customProps[field.name]
       )
     })
   }
@@ -55,7 +62,7 @@ const useForm = (inputArray, initialValues) => {
       })
 
       for (const rule of inputObject.validationRules) {
-        if (!rule.validate(inputValue, values)) {
+        if (!rule.validate(inputValue, values, customProps)) {
           setErrors((prevState) => ({
             ...prevState,
             [inputName]: rule.message
@@ -66,7 +73,7 @@ const useForm = (inputArray, initialValues) => {
 
       return true
     },
-    [inputArray, values]
+    [inputArray, values, customProps]
   )
 
   const onChange = useCallback(
@@ -83,6 +90,13 @@ const useForm = (inputArray, initialValues) => {
           setValues((prevState) => ({
             ...prevState,
             [e.target.name]: e.hex
+          }))
+          break
+        case 'file':
+          setValues((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+            images: e.target.files
           }))
           break
         default:
@@ -134,13 +148,8 @@ const useForm = (inputArray, initialValues) => {
   }, [valid, inputArray])
 
   const reset = () => {
-    setValues(initialStateValues)
-  }
-
-  const setInitialState = useCallback((initialState) => {
     setValues(initialState)
-    setInitialStateValues(initialState)
-  }, [])
+  }
 
   const changesMade = (oldValues, newValues) => {
     //returns a boolean value indicating whether overall form has changed
@@ -151,13 +160,11 @@ const useForm = (inputArray, initialValues) => {
     renderFormInputs,
     isFormValid,
     changesMade,
-    initialStateValues,
     values,
     touched,
     valid,
     errors,
-    reset,
-    setInitialState
+    reset
   }
 }
 
