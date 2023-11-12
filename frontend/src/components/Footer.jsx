@@ -1,13 +1,8 @@
-import { Container, Row, Col, Navbar } from 'react-bootstrap'
+import { Container, Navbar } from 'react-bootstrap'
 
 const Footer = () => {
   return (
     <footer>
-      {/* <Row>
-          <Col className='text-center py-3'>
-            <p>Race a bike. Improve your life.</p>
-          </Col>
-        </Row> */}
       <Navbar
         bg='dark'
         variant='dark'

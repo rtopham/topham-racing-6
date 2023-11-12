@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import {
   Icon,
-  USER_ICON,
+  //  USER_ICON,
   GEAR_ICON,
   CYCLIST_ICON,
   MEDAL_ICON,
@@ -54,11 +54,11 @@ const Header = () => {
           <Icon icon={STRAVA_ICON} /> Strava
         </Nav.Link>
       </LinkContainer>
-      <LinkContainer to='/login'>
+      {/* <LinkContainer to='/login'>
         <Nav.Link>
           <Icon icon={USER_ICON} /> Sign In
         </Nav.Link>
-      </LinkContainer>
+      </LinkContainer> */}
     </>
   )
 
@@ -101,6 +101,12 @@ const Header = () => {
                   </LinkContainer>
                   <LinkContainer to='/admin/edit-races'>
                     <NavDropdown.Item>Edit or Delete Races</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/add-title'>
+                    <NavDropdown.Item>Add Title</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to='/admin/edit-titles'>
+                    <NavDropdown.Item>Edit or Delete Titles</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/manage-images'>
                     <NavDropdown.Item>Manage Images</NavDropdown.Item>

@@ -1,11 +1,11 @@
-import RaceListTable from '../components/races/RaceListTable'
+import RaceListTable from '../../components/races/RaceListTable'
 import {
   useGetAllRacesQuery,
   useDeleteRaceMutation
-} from '../slices/racesApiSlice'
-import { Icon, CYCLIST_ICON } from '../components/icons'
-import Loader from '../components/Loader'
-import Message from '../components/Message'
+} from '../../slices/racesApiSlice'
+import { Icon, CYCLIST_ICON } from '../../components/icons'
+import Loader from '../../components/Loader'
+import Message from '../../components/Message'
 import { toast } from 'react-toastify'
 
 const EditRacesScreen = () => {

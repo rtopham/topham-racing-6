@@ -76,3 +76,20 @@ export const minMaxRule = (inputName, min, max, message) => {
     }
   }
 }
+
+export const imagesOnlyRule = (inputName, message) => {
+  return {
+    name: 'imagesOnly',
+    message: message || `${inputName} must be a valid image.`,
+    validate: (inputValue, values) => {
+      const validExtension = new RegExp(
+        '(' +
+          ['.jpg', '.jpeg', '.gif', '.png', 'webp']
+            .join('|')
+            .replace(/\./g, '\\.') +
+          ')$'
+      ).test(inputValue)
+      return validExtension
+    }
+  }
+}

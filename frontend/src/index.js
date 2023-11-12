@@ -29,9 +29,12 @@ import StatsScreen from './screens/StatsScreen'
 import StravaScreen from './screens/StravaScreen'
 import ErrorScreen from './screens/ErrorScreen'
 import AddRace from './screens/admin/AddRace'
-import EditRacesScreen from './screens/EditRacesScreen'
+import EditRacesScreen from './screens/admin/EditRacesScreen'
 import ManageImagesScreen from './screens/admin/ManageImagesScreen'
-import EditRace from './screens/admin/EditRaceScreen'
+import EditRaceScreen from './screens/admin/EditRaceScreen'
+import AddTitle from './screens/admin/AddTitle'
+import EditTitlesScreen from './screens/admin/EditTitlesScreen'
+import EditTitleScreen from './screens/admin/EditTitleScreen'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -51,8 +54,11 @@ const router = createBrowserRouter(
         <Route path='/admin/userlist' element={<UserListScreen />} />
         <Route path='/admin/add-race' element={<AddRace />} />
         <Route path='/admin/edit-races' element={<EditRacesScreen />} />
+        <Route path='/admin/add-title' element={<AddTitle />} />
+        <Route path='/admin/edit-titles' element={<EditTitlesScreen />} />
         <Route path='/admin/manage-images' element={<ManageImagesScreen />} />
-        <Route path='/admin/edit-races/:id' element={<EditRace />} />
+        <Route path='/admin/edit-races/:id' element={<EditRaceScreen />} />
+        <Route path='/admin/edit-titles/:id' element={<EditTitleScreen />} />
         <Route path='/admin/user/:id/edit' element={<UserEditScreen />} />
       </Route>
     </Route>

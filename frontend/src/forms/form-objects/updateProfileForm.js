@@ -6,12 +6,7 @@ import {
   passwordMatchRule
 } from '../form-utils/inputValidationRules'
 
-import {
-  name,
-  email,
-  password,
-  confirmPassword
-} from '../fields/formTestFields'
+import { name, email, password, confirmPassword } from '../fields/authFields'
 
 export const updateProfileForm = [
   {

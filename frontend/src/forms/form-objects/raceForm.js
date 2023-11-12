@@ -27,19 +27,19 @@ export const raceForm = [
     ...race_date,
     required: true,
     size: 'sm',
-    validationRules: [requiredRule('Password', 'Please provide race date')]
+    validationRules: [requiredRule('Date', 'Please provide race date')]
   },
   {
     ...category,
     required: true,
     size: 'sm',
-    validationRules: [requiredRule('Password', 'Please provide category')]
+    validationRules: [requiredRule('Category', 'Please provide category')]
   },
   {
     ...time,
     required: true,
     size: 'sm',
-    validationRules: [requiredRule('Password', 'Please provide race time')]
+    validationRules: [requiredRule('Time', 'Please provide race time')]
   },
   {
     ...location,
@@ -50,6 +50,6 @@ export const raceForm = [
     ...rank,
     required: true,
     size: 'sm',
-    validationRules: [requiredRule('Password', 'Please provide race rank')]
+    validationRules: [requiredRule('Rank', 'Please provide race rank')]
   }
 ]

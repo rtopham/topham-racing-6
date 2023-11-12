@@ -4,11 +4,12 @@ const ImageCarousel = ({ images }) => {
   const imgUrl = '/api/images/'
 
   return (
-    <Carousel className='mb-3' slide fade interval={null}>
+    <Carousel className='mb-3' fade interval={null}>
       {images.map((image, index) => {
         return (
           <Carousel.Item key={index}>
             <img
+              id={image._id}
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',

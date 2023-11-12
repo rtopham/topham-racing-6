@@ -58,7 +58,7 @@ const ProfileScreen = () => {
           type='submit'
           disabled={
             loadingUpdateProfile ||
-            !isFormValid ||
+            !isFormValid() ||
             !changesMade(initialState, values) ||
             values.password !== values.confirmPassword
           }

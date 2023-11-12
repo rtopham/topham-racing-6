@@ -3,8 +3,10 @@ import { Button } from 'react-bootstrap'
 import { Icon, TRASH_ICON, EDIT_ICON, MEDAL_ICON } from '../icons'
 import useServerSort from '../../tables/table-hooks/useServerSort'
 import SortableTable from '../../tables/table-components/SortableTable'
+import DeleteRecordButton from '../DeleteRecordButton'
+import { usNormal } from '../../utils/dateFormats'
 
-const TitleListTable = ({ titles, adminMode }) => {
+const TitleListTable = ({ titles, adminMode, deleteTitleHandler }) => {
   const config = [
     {
       label: 'TITLE',
@@ -37,18 +39,27 @@ const TitleListTable = ({ titles, adminMode }) => {
       render: (title) => {
         return adminMode ? (
           <>
-            <LinkContainer to={`/admin/title/${title._id}/edit`}>
+            <LinkContainer to={`/admin/edit-titles/${title._id}`}>
               <Button variant='link' className='btn-sm'>
-                <Icon icon={EDIT_ICON} />
+                <Icon className='text-info' icon={EDIT_ICON} />
               </Button>
             </LinkContainer>
-            <Button
-              variant='link'
-              className='btn-sm'
-              onClick={() => console.log('Delete')}
+            <DeleteRecordButton
+              className='text-danger'
+              title='Permanently Delete Title?'
+              confirmationText='permanently delete title'
+              confirmationAction={deleteTitleHandler}
+              icon={TRASH_ICON}
+              recordId={title._id}
+              tip='Delete this title'
             >
-              <Icon icon={TRASH_ICON} style={{ color: 'red' }} />
-            </Button>{' '}
+              Delete{' '}
+              <strong>
+                {' '}
+                {title.title} (date: {usNormal(title.title_date)})?
+              </strong>{' '}
+              <p>This action cannot be undone.</p>
+            </DeleteRecordButton>
           </>
         ) : (
           <></>
