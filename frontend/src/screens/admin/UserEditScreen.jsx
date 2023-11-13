@@ -1,8 +1,9 @@
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
 import UserEditForm from '../../forms/app-forms/UserEditForm'
 import { useGetUserDetailsQuery } from '../../slices/usersApiSlice'
+import GoBackButton from '../../components/GoBackButton'
 
 const UserEditScreen = () => {
   const { id: userId } = useParams()
@@ -25,12 +26,9 @@ const UserEditScreen = () => {
         </Message>
       ) : (
         <>
-          <>
-            <Link to='/admin/userlist' className='btn btn-light my-3'>
-              Go Back
-            </Link>
-            <UserEditForm user={user} refetch={refetch} />
-          </>
+          <GoBackButton arrow />
+
+          <UserEditForm user={user} refetch={refetch} />
         </>
       )}
     </>

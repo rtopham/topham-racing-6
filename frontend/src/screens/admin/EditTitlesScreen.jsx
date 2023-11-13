@@ -41,9 +41,9 @@ const EditTitlesScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>
+          <h2>
             <Icon icon={MEDAL_ICON} /> Edit Titles
-          </h1>
+          </h2>
 
           <TitleListTable
             titles={titles}

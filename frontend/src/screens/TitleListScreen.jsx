@@ -24,9 +24,9 @@ const TitleListScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>
+          <h2>
             <Icon icon={MEDAL_ICON} /> Titles
-          </h1>
+          </h2>
 
           {!isLoading && !error && <TitleListTable titles={titles} />}
         </>

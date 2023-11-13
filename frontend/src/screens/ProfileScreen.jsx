@@ -7,6 +7,7 @@ import { setCredentials } from '../slices/authSlice'
 import FormContainer from '../components/FormContainer'
 import useForm from '../forms/form-hooks/useForm'
 import { updateProfileForm } from '../forms/form-objects/updateProfileForm'
+import { USER_ICON, Icon } from '../components/icons'
 
 const ProfileScreen = () => {
   const dispatch = useDispatch()
@@ -49,7 +50,9 @@ const ProfileScreen = () => {
 
   return (
     <FormContainer>
-      <h2>User Profile</h2>
+      <h2>
+        <Icon icon={USER_ICON} /> User Profile
+      </h2>
 
       <Form onSubmit={submitHandler}>
         {renderFormInputs()}

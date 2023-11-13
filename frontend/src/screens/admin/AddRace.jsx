@@ -1,10 +1,11 @@
 import { Button, Container, Form } from 'react-bootstrap'
-import { Icon, BIKE_ICON } from '../../components/icons'
+import { Icon, CYCLIST_ICON } from '../../components/icons'
 import useForm from '../../forms/form-hooks/useForm'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { raceForm } from '../../forms/form-objects/raceForm'
 import { useAddRaceMutation } from '../../slices/racesApiSlice'
+import GoBackButton from '../../components/GoBackButton'
 
 const AddRace = () => {
   const initialState = {
@@ -39,11 +40,12 @@ const AddRace = () => {
   }
   return (
     <>
+      <GoBackButton arrow />
       <Container style={{ width: '500px' }}>
         <section>
-          <h1>
-            <Icon icon={BIKE_ICON} /> Add Race
-          </h1>
+          <h2>
+            <Icon icon={CYCLIST_ICON} /> Add Race
+          </h2>
         </section>
         <Form onSubmit={submitHandler}>
           {renderFormInputs()}

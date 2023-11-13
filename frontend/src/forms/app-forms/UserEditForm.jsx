@@ -41,7 +41,7 @@ const UserEditForm = ({ user, refetch }) => {
   }
   return (
     <FormContainer>
-      <h1>Edit User</h1>
+      <h2>Edit User</h2>
 
       <Form onSubmit={submitHandler}>
         {renderFormInputs()}

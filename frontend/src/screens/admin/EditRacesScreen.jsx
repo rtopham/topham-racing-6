@@ -41,9 +41,9 @@ const EditRacesScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>
+          <h2>
             <Icon icon={CYCLIST_ICON} /> Edit Races
-          </h1>
+          </h2>
 
           <RaceListTable
             races={races}

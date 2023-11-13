@@ -10,7 +10,8 @@ import {
   TRASH_ICON,
   EDIT_ICON,
   CHECK_ICON,
-  TIMES_ICON
+  TIMES_ICON,
+  USER_ICON
 } from '../../components/icons'
 import Message from '../../components/Message'
 import Loader from '../../components/Loader'
@@ -62,7 +63,7 @@ const UserListScreen = () => {
         <>
           <LinkContainer to={`/admin/user/${user._id}/edit`}>
             <Button variant='link' className='btn-sm'>
-              <Icon icon={EDIT_ICON} />
+              <Icon className='text-info' icon={EDIT_ICON} />
             </Button>
           </LinkContainer>
           <Button
@@ -114,7 +115,9 @@ const UserListScreen = () => {
 
   return (
     <>
-      <h1>Users</h1>
+      <h2>
+        <Icon icon={USER_ICON} /> Users
+      </h2>
       {loadingDelete && <Loader />}
       {isLoading ? (
         <Loader />

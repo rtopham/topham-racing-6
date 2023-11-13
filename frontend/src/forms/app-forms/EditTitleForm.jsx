@@ -33,9 +33,9 @@ const EditTitleForm = ({ title }) => {
     <>
       <Container style={{ width: '500px' }}>
         <section>
-          <h1>
+          <h2>
             <Icon icon={MEDAL_ICON} /> Edit Title
-          </h1>
+          </h2>
         </section>
         <Form onSubmit={submitHandler}>
           {renderFormInputs()}

@@ -1,5 +1,5 @@
 import { Container, Form, Button } from 'react-bootstrap'
-import { BIKE_ICON, Icon } from '../../components/icons'
+import { CYCLIST_ICON, Icon } from '../../components/icons'
 import { raceForm } from '../../forms/form-objects/raceForm'
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
@@ -33,9 +33,9 @@ const EditRaceForm = ({ race }) => {
     <>
       <Container style={{ width: '500px' }}>
         <section>
-          <h1>
-            <Icon icon={BIKE_ICON} /> Edit Race
-          </h1>
+          <h2>
+            <Icon icon={CYCLIST_ICON} /> Edit Race
+          </h2>
         </section>
         <Form onSubmit={submitHandler}>
           {renderFormInputs()}

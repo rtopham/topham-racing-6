@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { titleForm } from '../../forms/form-objects/titleForm'
 import { useAddTitleMutation } from '../../slices/titlesApiSlice'
+import GoBackButton from '../../components/GoBackButton'
 
 const AddTitle = () => {
   const initialState = {
@@ -35,11 +36,12 @@ const AddTitle = () => {
   }
   return (
     <>
+      <GoBackButton arrow />
       <Container style={{ width: '500px' }}>
         <section>
-          <h1>
+          <h2>
             <Icon icon={MEDAL_ICON} /> Add Title
-          </h1>
+          </h2>
         </section>
         <Form onSubmit={submitHandler}>
           {renderFormInputs()}

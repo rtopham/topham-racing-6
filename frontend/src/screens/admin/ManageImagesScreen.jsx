@@ -39,9 +39,9 @@ const ManageImagesScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>
+          <h2>
             <Icon icon={IMAGE_ICON} /> Manage Images
-          </h1>
+          </h2>
 
           <ImageList images={images} deleteImageHandler={deleteImageHandler} />
 

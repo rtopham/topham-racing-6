@@ -35,9 +35,9 @@ const RaceListScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>
+          <h2>
             <Icon icon={CYCLIST_ICON} /> Race Results
-          </h1>
+          </h2>
           <Filters races={data} activeFilter={activeFilter} />
           <RaceListTable races={filteredRaces} />
         </>

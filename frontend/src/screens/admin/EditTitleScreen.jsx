@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import EditTitleForm from '../../forms/app-forms/EditTitleForm'
 import Loader from '../../components/Loader'
 import Message from '../../components/Message'
+import GoBackButton from '../../components/GoBackButton'
 
 const EditTitleScreen = () => {
   const { id: titleId } = useParams()
@@ -20,6 +21,7 @@ const EditTitleScreen = () => {
         </Message>
       ) : (
         <>
+          <GoBackButton arrow />
           <EditTitleForm title={title} />
         </>
       )}

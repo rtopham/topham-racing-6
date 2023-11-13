@@ -25,9 +25,9 @@ const StatsScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>
+          <h2>
             <Icon icon={CHART_ICON} /> Stats
-          </h1>
+          </h2>
           <YearToDate races={races} />
           <AllTime races={races} />
         </>

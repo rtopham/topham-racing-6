@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import EditRaceForm from '../../forms/app-forms/EditRaceForm'
 import Loader from '../../components/Loader'
 import Message from '../../components/Message'
+import GoBackButton from '../../components/GoBackButton'
 
 const EditRaceScreen = () => {
   const { id: raceId } = useParams()
@@ -20,6 +21,7 @@ const EditRaceScreen = () => {
         </Message>
       ) : (
         <>
+          <GoBackButton arrow />
           <EditRaceForm race={race} />
         </>
       )}

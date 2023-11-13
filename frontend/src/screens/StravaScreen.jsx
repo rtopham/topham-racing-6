@@ -53,9 +53,9 @@ const StravaScreen = () => {
         </Message>
       ) : (
         <>
-          <h1>
+          <h2>
             <Icon icon={STRAVA_ICON} /> Strava
-          </h1>
+          </h2>
           <StravaWidgets stravaProfile={stravaProfile} />
           <StravaStats stravaProfile={stravaProfile} />
         </>

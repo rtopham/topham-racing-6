@@ -3,11 +3,14 @@ import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
 import {
   Icon,
   //  USER_ICON,
-  GEAR_ICON,
+  // GEAR_ICON,
   CYCLIST_ICON,
   MEDAL_ICON,
   CHART_ICON,
-  STRAVA_ICON
+  STRAVA_ICON,
+  CHECKERED_FLAG_ICON,
+  ADMIN_ICON,
+  USER_ICON
 } from './icons'
 import { LinkContainer } from 'react-router-bootstrap'
 import { useSelector, useDispatch } from 'react-redux'
@@ -68,7 +71,8 @@ const Header = () => {
         <Container>
           <LinkContainer to='/'>
             <Navbar.Brand>
-              <Icon icon={GEAR_ICON} /> Topham Racing
+              <Icon icon={CHECKERED_FLAG_ICON + ' fa-flip-horizontal'} /> Topham
+              Racing
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls='basic-navbar-nav' />
@@ -77,7 +81,14 @@ const Header = () => {
               {userInfo ? (
                 <>
                   <AppLinks />
-                  <NavDropdown title={userInfo.name} id='username'>
+                  <NavDropdown
+                    title={
+                      <>
+                        <Icon icon={USER_ICON} /> {userInfo.name}
+                      </>
+                    }
+                    id='username'
+                  >
                     <LinkContainer to='/profile'>
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
@@ -92,7 +103,14 @@ const Header = () => {
                 </>
               )}
               {userInfo && userInfo.isAdmin && (
-                <NavDropdown title='Admin' id='adminmenu'>
+                <NavDropdown
+                  title={
+                    <>
+                      <Icon icon={ADMIN_ICON} /> Admin
+                    </>
+                  }
+                  id='adminmenu'
+                >
                   <LinkContainer to='/admin/userlist'>
                     <NavDropdown.Item>User List</NavDropdown.Item>
                   </LinkContainer>
