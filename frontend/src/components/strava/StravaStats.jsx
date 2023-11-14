@@ -24,11 +24,6 @@ const StravaStats = ({ stravaProfile }) => {
     <>
       {isLoading || !stravaStats ? (
         <Loader />
-      ) : error ? (
-        <Message variant='danger'>
-          {' '}
-          {error?.data?.message || error.error}
-        </Message>
       ) : (
         <>
           <StravaStatsCard
@@ -43,6 +38,12 @@ const StravaStats = ({ stravaProfile }) => {
             title='All-Time Stats (since 2012)'
             stats={stravaStats.allTimeStats}
           />
+          {error && (
+            <Message variant='danger'>
+              {' '}
+              {error?.data?.message || error.error}
+            </Message>
+          )}
         </>
       )}
     </>

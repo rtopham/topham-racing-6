@@ -3,6 +3,12 @@ import { Carousel } from 'react-bootstrap'
 const ImageCarousel = ({ images }) => {
   const imgUrl = '/api/images/'
 
+  console.log(window.innerHeight)
+
+  let height = '50vh'
+
+  if (window.innerHeight < 1000) height = '75vh'
+
   return (
     <Carousel className='mb-3' fade interval={null}>
       {images.map((image, index) => {
@@ -13,7 +19,7 @@ const ImageCarousel = ({ images }) => {
               style={{
                 objectFit: 'cover',
                 objectPosition: 'center',
-                height: '50vh',
+                height: height,
                 overflow: 'hidden'
               }}
               className='d-block w-100'

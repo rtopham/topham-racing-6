@@ -114,11 +114,6 @@ const RaceListTable = ({ races, adminMode, deleteRaceHandler }) => {
           {' '}
           {error?.data?.message || error.error}
         </Message>
-      ) : tokenError ? (
-        <Message variant='danger'>
-          {' '}
-          {tokenError?.data?.message || tokenError.error}
-        </Message>
       ) : (
         <>
           <SortableTable
@@ -132,6 +127,12 @@ const RaceListTable = ({ races, adminMode, deleteRaceHandler }) => {
             keyFn={keyFn}
             setSortColumn={setSortColumn}
           />
+          {tokenError && (
+            <Message variant='danger'>
+              {' '}
+              {tokenError?.data?.message || tokenError.error}
+            </Message>
+          )}
         </>
       )}
     </>
